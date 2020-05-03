@@ -16,10 +16,10 @@ function PostCard(childData, authorID) {
 	this.title = childData.title
 	this.url = childData.url
 	this.created = childData.created
-	this.ID = childData.postID
+	this.postID = childData.postID
 	this.authorID = authorID
 	
-	console.log(this.title, this.url, this.created, this.ID, this.authorID)
+	console.log(this.title, this.url, this.created, this.postID, this.authorID)
 }
 
 PostCard.prototype.display = function(parentContainer) {
@@ -52,7 +52,9 @@ PostCard.prototype.display = function(parentContainer) {
 	postDelete.innerHTML = `<i class="fas fa-trash-alt"></i>`
 	postDelete.className = "delete-button"
 	
-	postDelete.addEventListener("click", this.deletePost)
+	postDelete.addEventListener("click", () => {
+		this.deletePost(this.authorID, this.postID)
+	})
 	
 	cardOptions.appendChild(postDate)
 	cardOptions.appendChild(postVisit)
@@ -68,9 +70,10 @@ PostCard.prototype.visitPost = function() {
 	window.location.assign(this.url)
 }
 
-PostCard.prototype.deletePost = function() {
-	var dbRef = firebase.database().ref().child("Posts").child(this.authorID).child(this.ID).remove().then(() => {
-		console.log("Deleted post")
+PostCard.prototype.deletePost = function(authorID, postID) {
+	var dbRef = firebase.database().ref()
+	dbRef.child("Posts").child(authorID).child(postID).remove().then(() => {
+		window.location.reload()
 	})
 }
 
@@ -93,14 +96,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	
 	firebase.auth().onAuthStateChanged(function(user) {
 		if (user) {
-			// User is signed in.
 			currentUser = firebase.auth().currentUser
 			profPic.src = user.photoURL
 			usernameText.textContent = user.displayName
 			
 			// loading posts from DB
 			var dbRef = firebase.database().ref().child("Posts").child(currentUser.uid)
-			dbRef.orderByChild("created").on("value", snapshot => {
+			dbRef.orderByChild("created").once("value", snapshot => {
 				snapshot.forEach(child => {
 					var childData = child.val()
 					var card = new PostCard(childData, user.uid)
@@ -108,7 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
 				})
 			})			
 		} else {
-			// No user is signed in.
 			console.log("No one signed in yet.")
 			window.location = "index.html"
 		}
