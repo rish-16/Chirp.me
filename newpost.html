@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
+		<script src="https://kit.fontawesome.com/4467197cc4.js" crossorigin="anonymous"></script>
+		
+		<title>Chirp | New</title>
+		
+		<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+		
+		<link rel="stylesheet" href="css/newpost.css">
+		<script src="js/newpost.js"></script>
+	</head>
+	
+	<body>
+	
+		<header>
+			<p id="logo">Chirp</p>
+			<div id="navbar">
+				<p id="visit-dash"><i class="fas fa-th-list"></i></p>
+				<p id="add-post"><i class="fas fa-plus"></i></p>
+				<p id="logout"><i class="fas fa-sign-out-alt"></i></p>
+				<img id="prof-pic">
+			</div>
+		</header>
+		
+		<div id="container">
+			<div id="content">
+				<form name="post-form">
+					<label for="title">What's your Chirp about?</label>
+					<br>
+					<input type="text" placeholder="I Want To Get Back To Work" name="title" id="title-box">
+					<br>
+					<br>
+					<label for="url">Link of first Tweet <span style="font-size: 16px; color: #5f27cd;">(the <strong>Head</strong>)</span></label>
+					<br>
+					<input type="text" placeholder="https://twitter.com/paulg/status/1256229770645442562?s=20" name="url" id="url-box">
+					<br>
+					<br>
+					<br>
+					<input type="submit" value="Publish" id="submit-button">
+				</form>
+			</div>
+		</div>
+		
+	</body>
+</html>

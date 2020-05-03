@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
+		<script src="https://kit.fontawesome.com/4467197cc4.js" crossorigin="anonymous"></script>
+		
+		<title>Chirp | Dashboard</title>
+		
+		<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+		
+		<link rel="stylesheet" href="css/dash.css">
+		<script src="js/dash.js"></script>
+	</head>
+	
+	<body>
+	
+		<header>
+			<p id="logo">Chirp</p>
+			<div id="navbar">
+				<p id="visit-dash"><i class="fas fa-th-list"></i></p>
+				<p id="add-post"><i class="fas fa-plus"></i></p>
+				<p id="logout"><i class="fas fa-sign-out-alt"></i></p>
+				<img id="prof-pic">
+			</div>
+		</header>
+		
+		<div id="section-header">Chirps by <span id="account-name"></span></div>
+		<div id="post-container">
+			<!-- <div class="post-card">
+				<p class="post-title">This is a title</p>
+				<div class="post-options">
+					<p class="visit-button"><i class="fas fa-external-link-alt"></i></p>
+					<p class="delete-button"><i class="fas fa-trash-alt"></i></p>
+				</div>
+			</div> -->
+		</div>
+		
+	</body>
+</html>
